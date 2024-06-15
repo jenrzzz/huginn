@@ -127,6 +127,7 @@ module Agents
       context.attach("deleteKey", ->(x) { memory.delete(x).to_json })
       context.attach("escapeHtml", ->(x) { CGI.escapeHTML(x) })
       context.attach("unescapeHtml", ->(x) { CGI.unescapeHTML(x) })
+      context.attach("getQueryParams", ->(uri) { Hash[URI(uri).query.split("&").map {|p| p.split("=") }] })
       context.attach('getCredential', ->(k) { credential(k); })
       context.attach('setCredential', ->(k, v) { set_credential(k, v) })
 
@@ -223,6 +224,10 @@ module Agents
 
         Agent.unescapeHtml = function(html) {
           return unescapeHtml(html);
+        }
+
+        Agent.getQueryParams = function(uri) {
+          return getQueryParams(uri);
         }
 
         Agent.check = function(){};

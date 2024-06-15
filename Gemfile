@@ -70,6 +70,9 @@ gem 'haversine'
 gem 'evernote_oauth'
 gem 'omniauth-evernote'
 
+# RssCalendarAgent
+gem 'icalendar'
+
 # LocalFileAgent (watch functionality)
 gem 'listen', '~> 3.9.0', require: false
 
